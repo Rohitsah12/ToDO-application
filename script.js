@@ -6,6 +6,13 @@ let todos=[];
 let todoDataList=document.getElementById('todo-data-list');
 let saveButton=document.getElementById("save-todo");
 let todoInputBar=document.getElementById("todo-input-bar");
+let getPendingTodosButton=document.getElementById("get-todos");
+
+getPendingTodosButton.addEventListener("click",()=>{
+    todos=todos.filter((todo)=>todo.status!="Finished");
+    reRenderTodos();
+})
+
 
 
 todoInputBar.addEventListener("keyup", function toggleSaveButton(){
@@ -130,6 +137,7 @@ function addTodo(todo,todoCount){
     hiddenInput.classList.add("form-control","todo-detail");
     hiddenInput.type="hidden"
 
+    //Adding attributes
     finishedButton.setAttribute("todo-idx",todoCount-1);
     deleteButton.setAttribute("todo-idx",todoCount-1);
     editButton.setAttribute("todo-idx",todoCount-1);
@@ -137,6 +145,7 @@ function addTodo(todo,todoCount){
     hiddenInput.setAttribute("todo-idx",todoCount-1);
     hiddenInput.addEventListener("keypress",SaveEdittedtoDo)
 
+    // adding listener
 
     deleteButton.onclick=removeTodo;
     finishedButton.onclick=finishedTodo;
