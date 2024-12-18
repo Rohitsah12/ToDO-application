@@ -32,12 +32,12 @@ html{
 .todo-action{
     flex-basis:15% ;
 }
-.todo-action{
-    padding-top: 0.7rem ;
-    padding-bottom: 0.7rem ;
+.todo-action button{
+    /* padding-top: 0.7rem ;
+    padding-bottom: 0.7rem ; */
 }
 
 .todo-item{
     font-size: 1.3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; 
 }
