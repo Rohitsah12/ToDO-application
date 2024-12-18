@@ -5,7 +5,8 @@ let todos=[];
 
 let todoDataList=document.getElementById('todo-data-list');
 let saveButton=document.getElementById("save-todo");
-let todoInputBar=document.getElementById("todo-input-bar")
+let todoInputBar=document.getElementById("todo-input-bar");
+
 
 todoInputBar.addEventListener("keyup", function toggleSaveButton(){
     let todoText=todoInputBar.value;
@@ -80,7 +81,27 @@ function finishedTodo(event){
 
 function editTodo(event){
     let editButtonPressed=event.target;
-    let indexToEdit=Number(finishButtonPressed.getAttribute("todo-idx"));
+    let indexToEdit=Number(editButtonPressed.getAttribute("todo-idx"));
+    let detailDiv=document.querySelector(`div[todo-idx="${indexToEdit}"]`);
+    let input=document.querySelector(`input[todo-idx="${indexToEdit}"]`);
+    detailDiv.style.display="none";
+    input.type="text";
+    input.value=detailDiv.textContent;
+}
+
+
+function SaveEdittedtoDo(event){
+    let input=event.target;
+    let indexToEdit=Number(input.getAttribute("todo-idx"));
+
+    let detailDiv=document.querySelector(`div[todo-idx="${indexToEdit}"]`);
+    if(event.keyCode==13){
+        detailDiv.textContent=input.value;
+        detailDiv.style.display="block";
+        input.value='';
+        input.type="hidden"
+    }
+    
 }
 
 function addTodo(todo,todoCount){
@@ -105,14 +126,22 @@ function addTodo(todo,todoCount){
     todoAction.classList.add("todo-action","d-flex","justify-content-start","gap-2");
     deleteButton.classList.add("btn","btn-danger","delete-todo");
     finishedButton.classList.add("btn","btn-success","finished-todo");
-    editButton.classList.add("btn","btn-warning","edit-todo")
+    editButton.classList.add("btn","btn-warning","edit-todo");
+    hiddenInput.classList.add("form-control","todo-detail");
+    hiddenInput.type="hidden"
 
     finishedButton.setAttribute("todo-idx",todoCount-1);
     deleteButton.setAttribute("todo-idx",todoCount-1);
-    editButton.setAttribute("todo-idx",todoCount-1)
+    editButton.setAttribute("todo-idx",todoCount-1);
+    todoDetail.setAttribute("todo-idx",todoCount-1);
+    hiddenInput.setAttribute("todo-idx",todoCount-1);
+    hiddenInput.addEventListener("keypress",SaveEdittedtoDo)
+
+
     deleteButton.onclick=removeTodo;
     finishedButton.onclick=finishedTodo;
     editButton.onclick=editTodo;
+    
 
 
     todoNumber.textContent=`${todoCount}.`;
@@ -128,6 +157,7 @@ function addTodo(todo,todoCount){
 
     todoItem.appendChild(todoNumber);
     todoItem.appendChild(todoDetail);
+    todoItem.appendChild(hiddenInput);
     todoItem.appendChild(todoStatus);
     todoItem.appendChild(todoAction);
 
