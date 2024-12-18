@@ -2,6 +2,32 @@
 console.log("Welcome to my todo app");
 
 let todoDataSection=document.getElementById('todo-data');
+let saveButton=document.getElementById("save-todo");
+let todoInputBar=document.getElementById("todo-input-bar")
+
+todoInputBar.addEventListener("keyup", function toggleSaveButton(){
+    let todoText=todoInputBar.value;
+    if(todoText.length==0){
+        if(saveButton.classList.contains("disabled")) return;
+        saveButton.classList.add("disabled");
+    }
+    else if(saveButton.classList.contains("disabled")){
+        saveButton.classList.remove("disabled");
+    }
+   
+})
+
+saveButton.addEventListener("click",function getTextAndAddTodo(){
+    let todoText=todoInputBar.value;
+    console.log(todoText);
+    if(todoText.length==0){
+        return;
+    }
+    addTodo(todoText);
+    todoInputBar.value='';
+})
+
+
 function addTodo(todoData){
     let rowDiv=document.createElement("div");
     let todoItem=document.createElement("div");
@@ -14,7 +40,7 @@ function addTodo(todoData){
     let hr=document.createElement("hr");
 
     //adding classes
-    rowDiv.classList("row")
+    rowDiv.classList.add("row")
     todoItem.classList.add("todo-item", "d-flex", "flex-row", "justify-content-between", "align-items-center")
     todoNumber.classList.add("todo-no");
     todoDetail.classList.add("todo-detail","text-muted");
