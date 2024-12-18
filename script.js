@@ -73,10 +73,14 @@ function finishedTodo(event){
             return 1;
         }
         return -1;
-
     })
 
     reRenderTodos();
+}
+
+function editTodo(event){
+    let editButtonPressed=event.target;
+    let indexToEdit=Number(finishButtonPressed.getAttribute("todo-idx"));
 }
 
 function addTodo(todo,todoCount){
@@ -88,6 +92,8 @@ function addTodo(todo,todoCount){
     let todoAction=document.createElement("div");
     let deleteButton=document.createElement("button");
     let finishedButton=document.createElement("button");
+    let editButton=document.createElement("button");
+    let hiddenInput=document.createElement("input")
     let hr=document.createElement("hr");
 
     //adding classes
@@ -99,20 +105,26 @@ function addTodo(todo,todoCount){
     todoAction.classList.add("todo-action","d-flex","justify-content-start","gap-2");
     deleteButton.classList.add("btn","btn-danger","delete-todo");
     finishedButton.classList.add("btn","btn-success","finished-todo");
+    editButton.classList.add("btn","btn-warning","edit-todo")
 
     finishedButton.setAttribute("todo-idx",todoCount-1);
     deleteButton.setAttribute("todo-idx",todoCount-1);
+    editButton.setAttribute("todo-idx",todoCount-1)
     deleteButton.onclick=removeTodo;
     finishedButton.onclick=finishedTodo;
+    editButton.onclick=editTodo;
+
 
     todoNumber.textContent=`${todoCount}.`;
     todoDetail.textContent=todo.text;//sets the todo text sent from the inptut element
     todoStatus.textContent=todo.status;
     deleteButton.textContent="Delete";
     finishedButton.textContent=todo.finishedButtontext;
+    editButton.textContent="Edit";
 
     todoAction.appendChild(deleteButton);
     todoAction.appendChild(finishedButton);
+    todoAction.appendChild(editButton);
 
     todoItem.appendChild(todoNumber);
     todoItem.appendChild(todoDetail);
