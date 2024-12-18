@@ -47,3 +47,40 @@ li:last-child{
 li:hover{
     background-color: aliceblue;
 }
+
+.filterBtn,.editBtn,.deleteBtn,.completedBtn{
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #f8e068;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:background-color 0.3s;
+}
+.editBtn{
+    background-color: #ffd700;
+}
+
+.deleteBtn{
+    background-color:#ff6347 ;
+}
+
+.completedBtn{
+    background-color: #32cd32;
+}
+.filterBtn:hover{
+    background-color: #4a90e2;
+}
+
+.todoItem{
+    letter-spacing: 1px;
+}
+
+.todoItem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
