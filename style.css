@@ -88,4 +88,6 @@ body.dark-mode hr {
     border-color: #f2f2f2;
 }
 
-
+body.dark-mode input::placeholder{
+    color: rgb(251, 238, 238);
+}
