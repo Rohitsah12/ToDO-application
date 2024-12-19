@@ -7,12 +7,20 @@ let todoDataList=document.getElementById('todo-data-list');
 let saveButton=document.getElementById("save-todo");
 let todoInputBar=document.getElementById("todo-input-bar");
 let getPendingTodosButton=document.getElementById("get-todos");
+let darkModeSwitch = document.getElementById("flexSwichCheckDefault");
 
 getPendingTodosButton.addEventListener("click",()=>{
     todos=todos.filter((todo)=>todo.status!="Finished");
     reRenderTodos();
 })
 
+darkModeSwitch.addEventListener("change", function toggleDarkMode() {
+    if (darkModeSwitch.checked) {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
+    }
+});
 
 
 todoInputBar.addEventListener("keyup", function toggleSaveButton(){
@@ -128,8 +136,8 @@ function addTodo(todo,todoCount){
     rowDiv.classList.add("row")
     todoItem.classList.add("todo-item", "d-flex", "flex-row", "justify-content-between", "align-items-center")
     todoNumber.classList.add("todo-no");
-    todoDetail.classList.add("todo-detail","text-muted");
-    todoStatus.classList.add("todo-status","text-muted");
+    todoDetail.classList.add("todo-detail","text-light");
+    todoStatus.classList.add("todo-status","text-light");
     todoAction.classList.add("todo-action","d-flex","justify-content-start","gap-2");
     deleteButton.classList.add("btn","btn-danger","delete-todo");
     finishedButton.classList.add("btn","btn-success","finished-todo");
