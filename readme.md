@@ -98,7 +98,7 @@ A simple and interactive To-Do app built using HTML, CSS, and JavaScript. This a
 ## Acknowledgements
 
 - [Bootstrap](https://getbootstrap.com/): For pre-styled components and responsive design.
-- [FontAwesome](https://fontawesome.com/): For icons (if used).
+
 
 ---
 
