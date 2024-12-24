@@ -136,8 +136,8 @@ function addTodo(todo,todoCount){
     rowDiv.classList.add("row")
     todoItem.classList.add("todo-item", "d-flex", "flex-row", "justify-content-between", "align-items-center")
     todoNumber.classList.add("todo-no");
-    todoDetail.classList.add("todo-detail","text-light");
-    todoStatus.classList.add("todo-status","text-light");
+    todoDetail.classList.add("todo-detail","text-dark");
+    todoStatus.classList.add("todo-status","text-dark");
     todoAction.classList.add("todo-action","d-flex","justify-content-start","gap-2");
     deleteButton.classList.add("btn","btn-danger","delete-todo");
     finishedButton.classList.add("btn","btn-success","finished-todo");
